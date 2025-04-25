@@ -118,6 +118,7 @@ import { login } from '@/services/api'
 import { saveToken } from '@/utils/auth'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { CheckCircle2 } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter();
@@ -133,12 +134,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <div className="w-full max-w-md rounded-lg shadow-lg p-6">
+    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
         
         {/* Heading comes BEFORE the LoginForm */}
-        <div className="text-center mb-6">
+        {/* <div className="text-center mb-6">
+          <CheckCircle2 className="h-7 w-7 text-emerald-500" />
           <h1 className="text-3xl font-bold">Task Manager</h1>
+          <p className="mt-2">Organize your tasks efficiently</p>
+        </div> */}
+        <div className="text-center mb-6">
+          <div className="flex items-center justify-center gap-2">
+            <CheckCircle2 className="h-7 w-7 text-emerald-500" />
+            <h1 className="text-3xl font-bold">TaskVerse</h1>
+          </div>
           <p className="mt-2">Organize your tasks efficiently</p>
         </div>
 

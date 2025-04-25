@@ -10,7 +10,7 @@ interface DashboardData {
   allTasks: number;
 }
 
-export default function Overview() {
+export default function TaskOverview() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
 
