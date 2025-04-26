@@ -9,7 +9,7 @@
 //     // Replace with your news API or RSS feed
 //     const fetchNews = async () => {
 //       try {
-//         const response = await fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=");
+//         const response = await fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY");
 //         const data = await response.json();
 //         setNews(data.articles || []); // Ensure we set it as an empty array if articles are undefined
 //       } catch (error) {
