@@ -17,6 +17,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "TaskVerse",
   description: "A simple task management application",
+  icons: {
+    icon: "/circle-check-big (1).svg", // or "/icon.png" depending on your file
+  },
 };
 
 export default function RootLayout({

@@ -1,370 +1,335 @@
-// 'use-client'
+// 'use client'
 
 // import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 // import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
-// import { CheckCircle2, Plus, Home, Calendar, Star, Tag, ChevronDown, User, Settings, LogOut } from "lucide-react";
+// import { CheckCircle2, Plus, Home, Calendar, Star, Tag, ChevronDown, User, Settings, LogOut, ChevronRight, ChevronLeft } from "lucide-react";
 // import Link from "next/link";
 // import { Button } from "../ui/button";
 // import { useState } from "react";
 
-// export function Sidebar(){
-// 	const [sidebarOpen, setSidebarOpen] = useState(false);
+// export function Sidebar() {
+//   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-// 	function handleAddTask(): void {
-// 		addTodo();
-// 	}
-// 	return (
-// 		<aside
-//         className={`${sidebarOpen ? "w-44" : "w-0"} md:w-54 h-full bg-white  flex-shrink-0 overflow-y-auto transition-all duration-300 border-r border-gray-200`}
-//       >
-//         <div className="flex flex-col h-full">
-//           <div className="h-16 p-4 shadow-sm border-b border-gray-300 bg-black-100">
-//             <Link href="/" className="flex items-center">
-//               <CheckCircle2 className="h-7 w-7 text-emerald-500" />
-//               <span className=" ml-2 font-bold text-xl font-poppins">TaskVerse</span>
-//             </Link>
+//   const toggleSidebar = () => {
+//     setSidebarOpen(!sidebarOpen);
+//   };
+
+//   return (
+//     <aside className={`${sidebarOpen ? "w-44" : "w-0"} md:w-54 h-full bg-white flex-shrink-0 overflow-y-auto transition-all duration-300 border-r border-gray-200`}>
+//       <div className="flex flex-col h-full">
+//         {/* Header */}
+//         <div className="h-16 p-4 shadow-sm border-b border-gray-300 bg-black-100 flex justify-between items-center">
+//           <Link href="/" className="flex items-center">
+//             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2b7a00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+//               <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+//               <path d="m9 11 3 3L22 4" />
+//             </svg>
+//             {sidebarOpen && (
+//               <span className="ml-2 font-bold text-xl font-poppins">TaskVerse</span>
+//             )}
+//           </Link>
+//         </div>
+
+//         {/* Navigation */}
+//         <nav className="flex-1 p-2">
+//           <div className="space-y-1">
+//             <SidebarLink href="/dashboard" icon={<Home className="w-5 h-5" />} label="Home" sidebarOpen={sidebarOpen} />
+//             <SidebarLink href="/tasks/today" icon={<CheckCircle2 className="w-5 h-5" />} label="Today" sidebarOpen={sidebarOpen} />
+//             <SidebarLink href="/dashboard?filter=upcoming" icon={<Calendar className="w-5 h-5" />} label="Upcoming" sidebarOpen={sidebarOpen} />
+//             <SidebarLink href="/dashboard?filter=important" icon={<Star className="w-5 h-5" />} label="Important" sidebarOpen={sidebarOpen} />
 //           </div>
 
-//           {/* <div className="p-3">
-//             <Button variant="outline" className="w-full h-10 bg-white justify-start gap-2 font-semibold text-black text-base" size="sm" onClick={handleAddTask}>
-//               <Plus size={36} />
-//               New Task
-//             </Button>
-//           </div> */}
-
-//           <nav className="flex-1 p-2">
+//           <div className="mt-6">
+//             {sidebarOpen && <h3 className="font-bold text-lg px-3 mb-2">Projects</h3>}
+//             {!sidebarOpen && <div className="h-8 flex items-center justify-center"><Tag className="w-5 h-5" /></div>}
 //             <div className="space-y-1">
-//               {/* <Button variant="ghost" className="w-full justify-start gap-2 text-black font-semibold text-" asChild>
-//                 <Link href="/dashboard">
-// 									<Home size={18} />
-// 									<span>Home</span>
-//                 </Link>
-//               </Button> */}
-// 							<Button variant="ghost" className="w-full justify-start gap-2 font-medium" asChild>
-// 								<Link href="/dashboard">
-// 									<div className="flex items-center gap-2">
-// 										<Home className="w-4 h-4 shrink-0 !w-5 !h-5" />
-// 										<span>Home</span>
-// 									</div>
-// 								</Link>
-// 							</Button>
-
-//               <Button variant="ghost" className="w-full justify-start gap-2 font-medium " asChild>
-//                 <Link href="/dashboard?filter=today">
-//                   <CheckCircle2 className="w-4 h-4 shrink-0 !w-5 !h-5" />
-//                   <span>Today</span>
-//                 </Link>
-//               </Button>
-//               <Button variant="ghost" className="w-full justify-start gap-2 font-medium " asChild>
-//                 <Link href="/dashboard?filter=upcoming">
-//                   <Calendar className="w-4 h-4 shrink-0 !w-5 !h-5" />
-//                   <span>Upcoming</span>
-//                 </Link>
-//               </Button>
-//               <Button variant="ghost" className="w-full justify-start gap-2 font-medium " asChild>
-//                 <Link href="/dashboard?filter=important">
-//                   <Star className="w-4 h-4 shrink-0 !w-5 !h-5" />
-//                   <span>Important</span>
-//                 </Link>
-//               </Button>
+//               <SidebarLink href="#" icon={<Tag className="w-5 h-5 text-blue-500" />} label="Personal" sidebarOpen={sidebarOpen} />
+//               <SidebarLink href="#" icon={<Tag className="w-5 h-5 text-emerald-500" />} label="Work" sidebarOpen={sidebarOpen} />
+//               <SidebarLink href="#" icon={<Tag className="w-5 h-5 text-purple-500" />} label="Health" sidebarOpen={sidebarOpen} />
+//               <SidebarLink href="#" icon={<Plus className="w-5 h-5" />} label="Add Project" sidebarOpen={sidebarOpen} />
 //             </div>
+//           </div>
+//         </nav>
 
-//             <div className="mt-6">
-//               <h3 className="font-bold text-lg px-3 mb-2">Projects</h3>
-//               <div className="space-y-1">
-//                 <Button variant="ghost" className="w-full justify-start gap-2" size="sm">
-//                   <Tag className="w-4 h-4 shrink-0 !w-5 !h-5 text-blue-500" />
-//                   <span>Personal</span>
-//                 </Button>
-//                 <Button variant="ghost" className="w-full justify-start gap-2" size="sm">
-//                   <Tag className="w-4 h-4 shrink-0 !w-5 !h-5 text-emerald-500" />
-//                   <span>Work</span>
-//                 </Button>
-//                 <Button variant="ghost" className="w-full justify-start gap-2" size="sm">
-//                   <Tag className="w-4 h-4 shrink-0 !w-5 !h-5 text-purple-500" />
-//                   <span>Health</span>
-//                 </Button>
-//                 <Button
-//                   variant="ghost"
-//                   className="w-full justify-start text-muted-foreground hover:text-foreground gap-2"
-//                   size="sm"
+//         {/* Profile Dropdown */}
+//         <div className="p-4 border-t border-gray-300 mt-auto">
+//           <DropdownMenu>
+//             <DropdownMenuTrigger asChild>
+//               <Button
+//                 variant="ghost"
+//                 className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center" : "justify-start"} focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0`}
+//               >
+//                 <div className={`flex items-center ${!sidebarOpen ? "justify-center" : ""}`}>
+//                   <Avatar className="h-6 w-6 mr-2">
+//                     <AvatarImage src="/placeholder.svg" alt="User" />
+//                     <AvatarFallback>JD</AvatarFallback>
+//                   </Avatar>
+//                   {sidebarOpen && (
+//                     <>
+//                       <span>John Doe</span>
+//                       <ChevronDown size={16} className="ml-auto" />
+//                     </>
+//                   )}
+//                 </div>
+//               </Button>
+//             </DropdownMenuTrigger>
+
+//             <DropdownMenuContent align="end" className="p-3 w-46 bg-gray-100 rounded-md">
+//               <DropdownMenuLabel className="pb-2 mb-2 border-b font-[550] border-gray-300">My Account</DropdownMenuLabel>
+//               <DropdownMenuSeparator />
+//               <DropdownMenuItem
+//                   className="p-2 h-10 hover:bg-gray-200 rounded-md cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
+//                   asChild
 //                 >
-//                   <Plus className="w-4 h-4 shrink-0 !w-5.5 !h-5.5" />
-//                   <span>Add Project</span>
-//                 </Button>
-//               </div>
-//             </div>
-//           </nav>
-
-//           <div className="p-4 border-t border-gray-300 mt-auto">
-// 						<DropdownMenu>
-// 							<DropdownMenuTrigger asChild>
-// 								<Button 
-// 									variant="ghost" 
-// 									className="w-full justify-start size-sm focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
-// 								>
-// 									<Avatar className="h-6 w-6 mr-2">
-// 										<AvatarImage src="/placeholder.svg" alt="User" />
-// 										<AvatarFallback>JD</AvatarFallback>
-// 									</Avatar>
-// 									<span>John Doe</span>
-// 									<ChevronDown size={16} className="ml-auto" />
-// 								</Button>
-// 							</DropdownMenuTrigger>
-// 							<DropdownMenuContent align="end" className="p-4 w-56 bg-white rounded-md">
-// 								<DropdownMenuLabel className="pb-2 mb-2 border-b font-[550] border-gray-300">My Account</DropdownMenuLabel>
-// 								<DropdownMenuSeparator />
-// 								<DropdownMenuItem 
-// 									className="p-2 h-10 hover:bg-gray-100 cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
-// 								>
-// 									<User className="h-5 w-5" />
-// 									<span>Profile</span>
-// 								</DropdownMenuItem>
-// 								<DropdownMenuItem 
-// 									className="p-2 h-10 hover:bg-gray-100 cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0" 
-// 									asChild
-// 								>
-// 									<Link href="/dashboard/settings">
-// 										<Settings className="h-5 w-5" />
-// 										<span>Settings</span>
-// 									</Link>
-// 								</DropdownMenuItem>
-// 								<DropdownMenuSeparator />
-// 								<DropdownMenuItem 
-// 									className="p-2 h-10 hover:bg-gray-100 cursor-pointer transition-colors border-t border-gray-300 flex items-center gap-2 focus:outline-none focus:ring-0" 
-// 									asChild
-// 								>
-// 									<Link href="/">
-// 										<LogOut className="h-5 w-5" />
-// 										<span>Log out</span>
-// 									</Link>
-// 								</DropdownMenuItem>
-// 							</DropdownMenuContent>
-// 						</DropdownMenu>
-// 					</div>
+//                   <Link href="/dashboard/settings">
+//                     <User className="h-4 w-4" />
+//                     <span>Profile</span>
+//                   </Link>
+//                 </DropdownMenuItem>
+//               <DropdownMenuItem
+//                   className="p-2 h-10 hover:bg-gray-200 rounded-md cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
+//                   asChild
+//                 >
+//                   <Link href="/dashboard/settings">
+//                     <Settings className="h-4 w-4" />
+//                     <span>Settings</span>
+//                   </Link>
+//                 </DropdownMenuItem>
+//               <DropdownMenuSeparator />
+//               <DropdownMenuItem
+//                   className="p-2 h-10 hover:bg-gray-200 rounded-md text-red-500 cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
+//                   asChild
+//                 >
+//                   <Link href="/">
+//                     <LogOut className="h-4 w-4" />
+//                     <span>Log Out</span>
+//                   </Link>
+//                 </DropdownMenuItem>
+              
+//             </DropdownMenuContent>
+//           </DropdownMenu>
 //         </div>
-//       </aside>
-// 	)
-// }
-// { /* Sidebar */}
-
-// function addTodo() {
-// 	throw new Error("Function not implemented.");
+//       </div>
+//     </aside>
+//   );
 // }
 
+// interface SidebarLinkProps {
+//   href: string;
+//   icon: React.ReactNode;
+//   label: string;
+//   sidebarOpen: boolean;
+// }
+
+// function SidebarLink({ href, icon, label, sidebarOpen }: SidebarLinkProps) {
+//   return (
+//     <Button variant="ghost" className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2 font-medium`} asChild>
+//       <Link href={href}>
+//         <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
+//           {icon}
+//           {sidebarOpen && <span>{label}</span>}
+//         </div>
+//       </Link>
+//     </Button>
+//   );
+// }
 
 
-'use-client'
+
+'use client'
 
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
-import { CheckCircle2, Plus, Home, Calendar, Star, Tag, ChevronDown, User, Settings, LogOut, ChevronRight, ChevronLeft, Menu } from "lucide-react";
+import { History, CheckCircle2, Plus, Home, Calendar, Star, Tag, ChevronDown, User, Settings, LogOut, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  function handleAddTask(): void {
-    addTodo();
-  }
+  const pathname = usePathname();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   return (
-		<aside
-		className={`${sidebarOpen ? "w-44" : "w-0"} md:w-54 h-full bg-white  flex-shrink-0 overflow-y-auto transition-all duration-300 border-r border-gray-200`}
-	>
-        <div className="flex flex-col h-full">
-          {/* Header with logo */}
-          <div className="h-16 p-4 shadow-sm border-b border-gray-300 bg-black-100 flex justify-between items-center">
-            <Link href="/" className="flex items-center">
-              <CheckCircle2 className="h-7 w-7 text-emerald-500" />
-              {sidebarOpen && (
-                <span className="ml-2 font-bold text-xl font-poppins">TaskVerse</span>
-              )}
-            </Link>
-            {/* <Button
-              variant="ghost"
-              size="sm"
-              className="p-0 h-8 w-8 rounded-full hover:bg-gray-200"
-              onClick={toggleSidebar}
-            >
-              {sidebarOpen ? (
-                <ChevronLeft className="h-5 w-5" />
-              ) : (
-                <ChevronRight className="h-5 w-5" />
-              )}
-            </Button> */}
+    <aside className={`${sidebarOpen ? "w-44" : "w-0"} md:w-54 h-full bg-white flex-shrink-0 overflow-y-auto transition-all duration-300 border-r border-gray-200`}>
+      <div className="flex flex-col h-full">
+        {/* Header */}
+        <div className="h-16 p-4 shadow-sm border-b border-gray-300 bg-black-100 flex justify-between items-center">
+          <Link href="/" className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2b7a00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+              <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+              <path d="m9 11 3 3L22 4" />
+            </svg>
+            {sidebarOpen && (
+              <span className="ml-2 font-bold text-xl font-poppins">TaskVerse</span>
+            )}
+          </Link>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 p-2">
+          <div className="space-y-1">
+            <SidebarLink 
+              href="/dashboard" 
+              icon={<Home className="w-5 h-5" />} 
+              label="Home" 
+              sidebarOpen={sidebarOpen} 
+              isActive={pathname === '/dashboard'}
+            />
+            <SidebarLink 
+              href="/tasks/today" 
+              icon={<CheckCircle2 className="w-5 h-5" />} 
+              label="Today" 
+              sidebarOpen={sidebarOpen} 
+              isActive={pathname === '/tasks/today'}
+            />
+            <SidebarLink 
+              href="/tasks/upcoming" 
+              icon={<Calendar className="w-5 h-5" />} 
+              label="Upcoming" 
+              sidebarOpen={sidebarOpen} 
+              isActive={pathname === '/tasks/upcoming'}
+            />
+            <SidebarLink 
+              href="/tasks/important" 
+              icon={<Star className="w-5 h-5" />} 
+              label="Important" 
+              sidebarOpen={sidebarOpen} 
+              isActive={pathname === '/tasks/important'}
+            />
+            <SidebarLink 
+              href="/tasks/history" 
+              icon={<History className="w-5 h-5" />} 
+              label="History" 
+              sidebarOpen={sidebarOpen} 
+              isActive={pathname === '/tasks/history'}
+            />
           </div>
 
-          <nav className="flex-1 p-2">
+          <div className="mt-6">
+            {sidebarOpen && <h3 className="font-bold text-lg px-3 mb-2">Projects</h3>}
+            {!sidebarOpen && <div className="h-8 flex items-center justify-center"><Tag className="w-5 h-5" /></div>}
             <div className="space-y-1">
-              <Button 
-                variant="ghost" 
-                className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2 font-medium`} 
-                asChild
-              >
-                <Link href="/dashboard">
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <Home className="w-5 h-5 shrink-0 !w-5 !h-5" />
-                    {sidebarOpen && <span>Home</span>}
-                  </div>
-                </Link>
-              </Button>
-
-              <Button 
-                variant="ghost" 
-                className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2 font-medium`} 
-                asChild
-              >
-                <Link href="/dashboard?filter=today">
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <CheckCircle2 className="w-5 h-5 shrink-0 !w-5 !h-5" />
-                    {sidebarOpen && <span>Today</span>}
-                  </div>
-                </Link>
-              </Button>
-
-              <Button 
-                variant="ghost" 
-                className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2 font-medium`} 
-                asChild
-              >
-                <Link href="/dashboard?filter=upcoming">
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <Calendar className="w-5 h-5 shrink-0 !w-5 !h-5" />
-                    {sidebarOpen && <span>Upcoming</span>}
-                  </div>
-                </Link>
-              </Button>
-
-              <Button 
-                variant="ghost" 
-                className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2 font-medium`} 
-                asChild
-              >
-                <Link href="/dashboard?filter=important">
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <Star className="w-5 h-5 shrink-0 !w-5 !h-5" />
-                    {sidebarOpen && <span>Important</span>}
-                  </div>
-                </Link>
-              </Button>
+              <SidebarLink 
+                href="/projects/personal" 
+                icon={<Tag className="w-5 h-5 text-blue-500" />} 
+                label="Personal" 
+                sidebarOpen={sidebarOpen} 
+                isActive={pathname === '/projects/personal'}
+              />
+              <SidebarLink 
+                href="/projects/work" 
+                icon={<Tag className="w-5 h-5 text-emerald-500" />} 
+                label="Work" 
+                sidebarOpen={sidebarOpen} 
+                isActive={pathname === '/projects/work'}
+              />
+              <SidebarLink 
+                href="/projects/health" 
+                icon={<Tag className="w-5 h-5 text-purple-500" />} 
+                label="Health" 
+                sidebarOpen={sidebarOpen} 
+                isActive={pathname === '/projects/health'}
+              />
+              {/* <SidebarLink 
+                href="/projects/new" 
+                icon={<Plus className="w-5 h-5" />} 
+                label="Add Project" 
+                sidebarOpen={sidebarOpen} 
+                isActive={pathname === '/projects/new'}
+              /> */}
             </div>
+          </div>
+        </nav>
 
-            <div className="mt-6">
-              {sidebarOpen && <h3 className="font-bold text-lg px-3 mb-2">Projects</h3>}
-              {!sidebarOpen && <div className="h-8 flex items-center justify-center"><Tag className="w-5 h-5" /></div>}
-              <div className="space-y-1">
-                <Button 
-                  variant="ghost" 
-                  className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2`} 
-                  size="sm"
-                >
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <Tag className="w-5 h-5 shrink-0 !w-5 !h-5 text-blue-500" />
-                    {sidebarOpen && <span>Personal</span>}
-                  </div>
-                </Button>
+        {/* Profile Dropdown */}
+        <div className="p-4 border-t border-gray-300 mt-auto">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center" : "justify-start"} focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0`}
+              >
+                <div className={`flex items-center ${!sidebarOpen ? "justify-center" : ""}`}>
+                  <Avatar className="h-6 w-6 mr-2">
+                    <AvatarImage src="/placeholder.svg" alt="User" />
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
+                  {sidebarOpen && (
+                    <>
+                      <span>John Doe</span>
+                      <ChevronDown size={16} className="ml-auto" />
+                    </>
+                  )}
+                </div>
+              </Button>
+            </DropdownMenuTrigger>
 
-                <Button 
-                  variant="ghost" 
-                  className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2`} 
-                  size="sm"
-                >
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <Tag className="w-5 h-5 shrink-0 !w-5 !h-5 text-emerald-500" />
-                    {sidebarOpen && <span>Work</span>}
-                  </div>
-                </Button>
-
-                <Button 
-                  variant="ghost" 
-                  className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2`} 
-                  size="sm"
-                >
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <Tag className="w-5 h-5 shrink-0 !w-5 !h-5 text-purple-500" />
-                    {sidebarOpen && <span>Health</span>}
-                  </div>
-                </Button>
-
-                <Button
-                  variant="ghost"
-                  className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center px-0" : "justify-start"} text-muted-foreground hover:text-foreground gap-2`}
-                  size="sm"
-                >
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
-                    <Plus className="w-5 h-5 shrink-0 !w-5 !h-5" />
-                    {sidebarOpen && <span>Add Project</span>}
-                  </div>
-                </Button>
-              </div>
-            </div>
-          </nav>
-
-          <div className="p-4 border-t border-gray-300 mt-auto">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className={`w-full hover:bg-gray-200 ${!sidebarOpen ? "justify-center" : "justify-start"} focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0`}
-                >
-                  <div className={`flex items-center ${!sidebarOpen ? "justify-center" : ""}`}>
-                    <Avatar className="h-6 w-6 mr-2">
-                      <AvatarImage src="/placeholder.svg" alt="User" />
-                      <AvatarFallback>JD</AvatarFallback>
-                    </Avatar>
-                    {sidebarOpen && (
-                      <>
-                        <span>John Doe</span>
-                        <ChevronDown size={16} className="ml-auto" />
-                      </>
-                    )}
-                  </div>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="p-3 w-46 bg-gray-100 rounded-md">
-                <DropdownMenuLabel className="pb-2 mb-2 border-b font-[550] border-gray-300">My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="p-2 h-10 hover:bg-gray-200 rounded-md cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
-                >
-                  <User className="h-5 w-5" />
-                  <span>Profile</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem
+            <DropdownMenuContent align="end" className="p-3 w-46 bg-gray-100 rounded-md">
+              <DropdownMenuLabel className="pb-2 mb-2 border-b font-[550] border-gray-300">My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
                   className="p-2 h-10 hover:bg-gray-200 rounded-md cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
                   asChild
                 >
                   <Link href="/dashboard/settings">
-                    <Settings className="h-5 w-5" />
+                    <User className="h-4 w-4" />
+                    <span>Profile</span>
+                  </Link>
+                </DropdownMenuItem>
+              <DropdownMenuItem
+                  className="p-2 h-10 hover:bg-gray-200 rounded-md cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
+                  asChild
+                >
+                  <Link href="/dashboard/settings">
+                    <Settings className="h-4 w-4" />
                     <span>Settings</span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="p-2 h-10 hover:bg-gray-200 rounded-md cursor-pointer transition-colors border-t border-gray-300 flex items-center gap-2 focus:outline-none focus:ring-0"
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                  className="p-2 h-10 hover:bg-gray-200 rounded-md text-red-500 cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
                   asChild
                 >
                   <Link href="/">
-                    <LogOut className="h-5 w-5" />
-                    <span>Log out</span>
+                    <LogOut className="h-4 w-4" />
+                    <span>Log Out</span>
                   </Link>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+              
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-      </aside>
-      
+      </div>
+    </aside>
   );
 }
 
-function addTodo() {
-  throw new Error("Function not implemented.");
+interface SidebarLinkProps {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  sidebarOpen: boolean;
+  isActive: boolean;
+}
+
+function SidebarLink({ href, icon, label, sidebarOpen, isActive }: SidebarLinkProps) {
+  return (
+    <Button 
+      variant="ghost" 
+      className={`w-full ${isActive ? 'bg-gray-200 text-blue-600 font-semibold' : 'hover:bg-gray-200'} ${!sidebarOpen ? "justify-center px-0" : "justify-start"} gap-2 font-medium transition-colors`} 
+      asChild
+    >
+      <Link href={href}>
+        <div className={`flex items-center ${!sidebarOpen ? "justify-center" : "gap-2"}`}>
+          {icon}
+          {sidebarOpen && <span>{label}</span>}
+        </div>
+      </Link>
+    </Button>
+  );
 }

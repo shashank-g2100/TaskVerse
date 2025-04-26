@@ -42,7 +42,7 @@ interface TaskTabProps {
 }
 
 export function TaskTab({ activeTab, setActiveTab }: TaskTabProps) {
-  const tabs: TabType[] = ['Today', 'Upcoming', 'All Tasks'];
+  const tabs: TabType[] = [ 'All Tasks', 'Today', 'Upcoming'];
   
   return (
     <div className="inline-flex rounded-md shadow" role="group">
@@ -55,7 +55,7 @@ export function TaskTab({ activeTab, setActiveTab }: TaskTabProps) {
             activeTab === tab
               ? 'bg-gray-200 text-gray-900'
               : 'bg-white text-gray-500 hover:bg-gray-50'
-          } ${tab === 'Today' ? 'rounded-l-md' : ''} ${tab === 'All Tasks' ? 'rounded-r-md' : ''}`}
+          } ${tab === 'All Tasks' ? 'rounded-l-md' : ''} ${tab === 'Upcoming' ? 'rounded-r-md' : ''}`}
         >
           {tab}
         </button>

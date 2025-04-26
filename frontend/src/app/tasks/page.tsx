@@ -753,10 +753,11 @@ import { TaskItem } from '@/types/task';
 import { TaskTab } from '@/components/tasks/TaskTab';
 import { TaskList } from '@/components/tasks/TaskList';
 import { AddTaskForm } from '@/components/tasks/AddTaskForm';
+import { Plus } from 'lucide-react';
 
 export default function TasksPage() {
   type TabType = 'Today' | 'Upcoming' | 'All Tasks';
-  const [activeTab, setActiveTab] = useState<TabType>('Today');
+  const [activeTab, setActiveTab] = useState<TabType>('All Tasks');
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [showAddTaskForm, setShowAddTaskForm] = useState(false);
   const [tasks, setTasks] = useState<TaskItem[]>([
@@ -915,7 +916,7 @@ export default function TasksPage() {
               onClick={addNewTask}
               className="bg-black text-white hover:bg-gray-800"
             >
-              <span className="mr-2">+</span> Add Task
+              <Plus size={36} /> Add Task
             </Button>
           </div>
 
