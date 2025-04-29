@@ -276,7 +276,7 @@ export function Sidebar() {
                   className="p-2 h-10 hover:bg-gray-200 rounded-md cursor-pointer transition-colors flex items-center gap-2 focus:outline-none focus:ring-0"
                   asChild
                 >
-                  <Link href="/dashboard/settings">
+                  <Link href="/dashboard/profile">
                     <User className="h-4 w-4" />
                     <span>Profile</span>
                   </Link>

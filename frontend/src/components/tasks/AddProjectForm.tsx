@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft } from 'lucide-react';
+import Notification from '@/components/ui/notification';
 
 // Assuming you'll have a ProjectItem type that looks something like this
 interface ProjectItem {
@@ -39,6 +40,12 @@ export const AddProjectForm = ({ onClose, onAddProject }: AddProjectFormProps) =
     { name: 'Cyan', value: '#06B6D4' }
   ];
 
+  const [notification, setNotification] = useState({
+    isOpen: false,
+    message: '',
+    type: 'success' as const
+  });
+
   const categoryOptions = ['Personal', 'Work', 'Health', 'Education', 'Finance', 'Other'];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -52,8 +59,25 @@ export const AddProjectForm = ({ onClose, onAddProject }: AddProjectFormProps) =
       dueDate: dueDate || undefined
     };
     
-    onAddProject(newProject);
-    onClose();
+    // onAddProject(newProject);
+    // onClose();
+  };
+
+  const handleSave = () => {
+    // Here you would normally save the data to your backend
+    // For now, we'll just show the notification
+    setNotification({
+      isOpen: true,
+      message: 'Project created successfully!',
+      type: 'success'
+    });
+    setTimeout(() => {
+      onClose(); // close the modal after slight delay
+    }, 1000);
+  };
+
+  const closeNotification = () => {
+    setNotification(prev => ({ ...prev, isOpen: false }));
   };
 
   return (
@@ -148,11 +172,19 @@ export const AddProjectForm = ({ onClose, onAddProject }: AddProjectFormProps) =
             </Button>
             <Button 
               type="submit"
+              onClick={handleSave}
               className="bg-black text-white hover:bg-gray-800 px-6"
             >
               Create Project
             </Button>
           </div>
+          <Notification
+            type={notification.type}
+            message={notification.message}
+            isOpen={notification.isOpen}
+            onClose={closeNotification}
+            duration={3000}
+          />
         </form>
       </div>
     </div>

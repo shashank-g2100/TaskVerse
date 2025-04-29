@@ -37,7 +37,7 @@ import { TaskList } from '@/components/tasks/TaskList';
 import { AddTaskForm } from '@/components/tasks/AddTaskForm';
 import { Sidebar } from '@/components/dashboard/sidebar';
 import { Header } from '@/components/dashboard/header';
-import { Star, Calendar } from 'lucide-react';
+import { Star, Calendar, Plus } from 'lucide-react';
 
 export default function UpcomingPage() {
   const [showAddTaskForm, setShowAddTaskForm] = useState(false);
@@ -167,7 +167,7 @@ export default function UpcomingPage() {
                   onClick={addNewTask}
                   className="bg-black text-white hover:bg-gray-800"
                 >
-                  <span className="mr-2">+</span> Add Task
+                  <Plus size={36} /> Add Task
                 </Button>
               </div>
 

@@ -8,7 +8,7 @@ import { TaskList } from '@/components/tasks/TaskList';
 import { AddTaskForm } from '@/components/tasks/AddTaskForm';
 import { Sidebar } from '@/components/dashboard/sidebar';
 import { Header } from '@/components/dashboard/header';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Plus } from 'lucide-react';
 
 export default function TodayPage() {
   const [activeTab, setActiveTab] = useState<'Today' | 'Upcoming' | 'All Tasks'>('Today');
@@ -139,7 +139,7 @@ export default function TodayPage() {
 									onClick={addNewTask}
 									className="bg-black text-white hover:bg-gray-800"
 								>
-									<span className="mr-2">+</span> Add Task
+									<Plus size={36} /> Add Task
 								</Button>
 							</div>
 

@@ -5,33 +5,8 @@ import WeatherWidget from "@/components/dashboard/WeatherWidget";
 import { Header } from "@/components/dashboard/header";
 import { Sidebar } from "@/components/dashboard/sidebar";
 import { WelcomeBanner } from "@/components/dashboard/welcome-banner";
-import AddTaskForm from "@/components/tasks/AddTaskForm";
-import { TaskList } from "@/components/tasks/TaskList";
 import TaskOverview from "@/components/tasks/TaskOverview";
 import NewsWidget from "@/components/dashboard/NewsWidget";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuItem,
-} from "@radix-ui/react-dropdown-menu";
-import {
-  Calendar,
-  CheckCircle2,
-  ChevronDown,
-  Home,
-  LogOut,
-  Plus,
-  Settings,
-  Star,
-  Tag,
-  User,
-} from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
 export default function DashboardPage() {

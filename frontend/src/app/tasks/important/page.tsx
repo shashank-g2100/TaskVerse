@@ -40,7 +40,7 @@ import { TaskList } from '@/components/tasks/TaskList';
 import { AddTaskForm } from '@/components/tasks/AddTaskForm';
 import { Sidebar } from '@/components/dashboard/sidebar';
 import { Header } from '@/components/dashboard/header';
-import { Star } from 'lucide-react';
+import { Plus, Star } from 'lucide-react';
 
 export default function ImportantPage() {
   const [showAddTaskForm, setShowAddTaskForm] = useState(false);
@@ -177,7 +177,7 @@ export default function ImportantPage() {
                   onClick={addNewTask}
                   className="bg-black text-white hover:bg-gray-800"
                 >
-                  <span className="mr-2">+</span> Add Task
+                  <Plus size={36} /> Add Task
                 </Button>
               </div>
 
